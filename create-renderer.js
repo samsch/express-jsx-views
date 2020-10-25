@@ -1,5 +1,6 @@
 'use strict';
 
+const fsPath = require('path');
 const assureArray = require('assure-array');
 
 function callIfFunction(subject, [...args]) {
@@ -37,14 +38,13 @@ function createRenderer(
 			// that the file is inside the views folder.
 			// Note: should only need to test once in app lifetime due to require cache
 			if (testedSafe[path] === undefined) {
-				const pathIsSafe = assureArray(options.settings.views).some(
-					viewFolder => {
-						// Ensure last character in `view` paths is `/` to avoid matching a longer folder/file name
-						const folderWithSlash =
-							viewFolder.slice(-1) === '/' ? viewFolder : `${viewFolder}/`;
-						return new RegExp(`^${folderWithSlash}`).test(path);
-					},
-				);
+				const pathIsSafe = assureArray(options.settings.views).some(view => {
+					const viewFolder = fsPath.resolve(view);
+					// Ensure last character in `view` paths is `/` to avoid matching a longer folder/file name
+					const folderWithSlash =
+						viewFolder.slice(-1) === '/' ? viewFolder : `${viewFolder}/`;
+					return new RegExp(`^${folderWithSlash}`).test(path);
+				});
 				if (!pathIsSafe) {
 					throw new Error(
 						`Attempted to use unsafe path outside view directory: ${path}`,

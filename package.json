@@ -1,0 +1,58 @@
+{
+  "name": "@nsrv/express-jsx-views",
+  "version": "0.0.1",
+  "description": "A React and Inferno template engine for Express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=development nodemon -e js,jsx,mjs,json example/server.js"
+  },
+  "keywords": [],
+  "author": "Samuel Scheiderich",
+  "license": "0BSD",
+  "devDependencies": {
+    "@samsch/eslint-config-default": "^0.1.0",
+    "eslint": "^7.12.0",
+    "express": "^4.17.1",
+    "inferno": "^7.4.6",
+    "inferno-hyperscript": "^7.4.6",
+    "inferno-server": "^7.4.6",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "peerDependencies": {
+    "inferno": "*",
+    "inferno-hyperscript": "*",
+    "inferno-server": "*",
+    "react": "*",
+    "react-dom": "*"
+  },
+  "peerDependenciesMeta": {
+    "inferno": {
+      "optional": true
+    },
+    "inferno-hyperscript": {
+      "optional": true
+    },
+    "inferno-server": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
+    "@babel/register": "^7.12.1",
+    "assure-array": "^1.0.0",
+    "babel-plugin-inferno": "^6.1.1",
+    "create-error": "^0.3.1"
+  }
+}

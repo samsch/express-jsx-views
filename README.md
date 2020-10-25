@@ -21,7 +21,7 @@ npm i @nsrv/express-jsx-views
 npm i inferno inferno-hyperscript inferno-server
 
 # For React
-npm i react react-server
+npm i react react-dom
 ```
 
 The necessary babel plugins are included for both.
@@ -51,7 +51,7 @@ app.get('*', (req, res) => {
 	res.locals = {
 		title: 'Homepage',
 	};
-	res.render('Home', { name: 'Sam' });
+	res.render('home', { name: 'Sam' });
 });
 
 app.listen(3000);
@@ -60,8 +60,6 @@ app.listen(3000);
 views/home.jsx
 ```jsx
 'use strict';
-
-const CurrentPath = require('./current-path');
 
 function Home({ name, _locals }) {
 	return (
@@ -91,6 +89,8 @@ to
 ```js
 app.engine('jsx', createRenderer('react'));
 ```
+
+Also the `charset` prop on the first `<meta>` element needs to be renamed `charSet` for React.
 
 ## Features
 
